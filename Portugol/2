@@ -1,0 +1,20 @@
+programa {
+  inclua biblioteca Util --> u 
+  funcao inicio() {
+
+    inteiro nv[5]
+    inteiro vl = 1, b = 1
+
+
+    para(inteiro i = 0; i <=4; i++){
+		nv[i] = u.sorteia(0, 5)
+    vl = nv[i]
+     para(inteiro j = 0; j <=4; j++){
+      enquanto(nv[j] == vl){
+      nv[j] = u.sorteia(0,5) 
+      }
+    }  
+  }
+  escreva(nv)  
+}
+  	
