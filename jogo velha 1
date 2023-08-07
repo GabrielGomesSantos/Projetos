@@ -1,0 +1,115 @@
+programa {
+  inclua biblioteca Util --> u
+  funcao inicio() {
+  //Variaveis 
+   const inteiro TAMANHO = 8
+    inteiro op1 
+    logico ol1 = verdadeiro
+    inteiro jogada
+    cadeia tab [TAMANHO][TAMANHO] = {"1","2","3","4","5","6","7","8","9"}
+    escreva("Você quer jogar um jogo?\n")
+    escreva("1) Sim\n2) Não\n")
+    leia(op1)
+    limpa()
+
+    enquanto(ol1 == verdadeiro){
+      escolha(op1)
+
+      caso 1 
+      ol1 = falso
+      escreva("Que bom, vamos jogar um jogo classico chamdo Jogo da Velha!!\n")
+      u.aguarde(500)
+      limpa()
+      escreva("\n")
+      escreva(" 1 | 2 | 3 \n")
+      escreva("------------\n")
+      escreva(" 4 | 5 | 6 \n")
+      escreva("------------\n")  
+      escreva(" 7 | 8 | 9 \n")
+
+      leia(jogada)
+      limpa()
+
+    para (inteiro linha = 0; linha < TAMANHO; linha++){
+      escreva(linha)
+			para (inteiro coluna = 0; coluna < TAMANHO; coluna++){
+        escreva(+-.)
+        se(jogada == tab[linha][coluna]){
+
+          escreva(tab[linha][coluna]," esse ")
+
+        }
+
+      }
+    }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+      pare
+
+
+
+      caso 2 
+      ol1 = falso
+      escreva("tudo bem...")
+      u.aguarde(1000)
+      limpa()
+      pare 
+      
+
+      caso contrario 
+
+      escreva("desculpa qual sua resposta mesmo?")
+      escreva("\n1) Sim\n2) Não\n")
+      leia(op1)
+      limpa()
+      ol1 = verdadeiro
+      pare 
+      
+    }
+
+
+
+
+  
+
+  }
+}
