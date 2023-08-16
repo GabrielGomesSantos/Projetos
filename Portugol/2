@@ -1,7 +1,7 @@
 programa{
   inclua biblioteca Util --> u
   funcao inicio(){
-    inteiro pos[5][5] // 1 = nada  2 = navio achado = limpo
+    inteiro pos[5][5] // 1 = nada  2 = navio achado = limpo 4 onde eu to 
     logico navios [5][5]
     inteiro i = 1
     
@@ -9,7 +9,7 @@ programa{
   //=-=-=Variaveis jogaveis=-=-
     inteiro vida = 5
     cadeia jogada
-    
+    inteiro li = 0 , co = 0
 
   //=-=-=Resetar numeros=-=-=
 
@@ -43,9 +43,11 @@ programa{
 
    
   //=-=-Mapa=-=-= □ ☐ ☑ ☒
-
+    escreva("Aperte W para ir para cima A para ir para a esquerda S para ir para baixo e S para ir para a direita, Boa sorte!\n")
     enquanto(vida !=0){
-      escreva("   1  2 3  4  5 \n")
+      limpa()
+      i = 1
+      escreva("  1  2 3  4 5 \n")
       para (inteiro linha = 0; linha <5; linha++){
         escreva(i++," ")
         para (inteiro coluna = 0; coluna < 5; coluna++){		
@@ -55,17 +57,40 @@ programa{
           senao se(pos[linha][coluna] == 2){
             escreva("☑ ")
           }
+          senao se(pos[linha][coluna] == 4){
+            escreva("□ ")
+          }
           senao{
             escreva("☐ ")
           }
         }
         escreva("\n")
       }
+       leia(jogada)
 
-      escreva("qual sua jogada? \nR: ")
-      leia(jogada)
+      escolha (jogada)
+      {
+        caso "w"
+         li++
+        pare
 
+        caso "s" 
+         li--
+        pare
 
+        caso "a"
+         co--
+        pare
+
+        caso "d"
+         co++  
+        pare
+
+        caso contrario
+          escreva("opção invalida\n")
+        pare
+      }
+    pos[li][co] = 4
 
 
 
