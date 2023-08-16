@@ -9,8 +9,10 @@ programa{
 
   //=-=-=Variaveis jogaveis=-=-
     inteiro vida = 5
+    inteiro pontos = 0
     cadeia jogada
     inteiro li = 0 , co = 0
+    
 
   //=-=-=Resetar numeros=-=-=
 
@@ -48,21 +50,24 @@ programa{
     enquanto(vida !=0){
       limpa()
       i = 1
-      escreva("  1  2 3  4 5 \n")
+      escreva("Vidas: ",vida," \n")
+      escreva("   1  2   3  4   5 \n")
       para (inteiro linha = 0; linha <5; linha++){
         escreva(i++," ")
         para (inteiro coluna = 0; coluna < 5; coluna++){		
           se(pos[linha][coluna] == 1){
-          escreva("☒ ")
+          escreva("🟦 ")
+          vida --
           }
           senao se(pos[linha][coluna] == 2){
-            escreva("☑ ")
+            escreva("🚢 ")
+            pontos = pontos + 100
           }
           senao se(pos[linha][coluna] == 4){
-            escreva("□ ")
+            escreva("⚫ ")
           }
           senao{
-            escreva("☐ ")
+            escreva("🌊 ")
           }
         }
         escreva("\n")
@@ -97,25 +102,30 @@ programa{
       }
       limpa()
       i = 1
-      escreva("  1  2 3  4 5 \n")
+      escreva("vidas: ",vida," \n")
+      escreva("   1  2   3  4   5 \n")
       para (inteiro linha = 0; linha <5; linha++){
         escreva(i++," ")
         para (inteiro coluna = 0; coluna < 5; coluna++){		
           se(pos[linha][coluna] == 1){
-          escreva("☒ ")
+          escreva("🟦 ")
+          vida --
           }
           senao se(pos[linha][coluna] == 2){
-            escreva("☑ ")
+            escreva("🚢 ")
+            pontos = pontos + 100
           }
           senao se(pos[linha][coluna] == 4){
-            escreva("□ ")
+            escreva("⚫ ")
           }
           senao{
-            escreva("☐ ")
+            escreva("🌊 ")
           }
         }
         escreva("\n")
       }
+      escreva("para confirmar joga repita!!")
+       leia(jogada)
 
     u.aguarde(500)
     n[li][co] = verdadeiro
