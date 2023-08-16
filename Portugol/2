@@ -4,6 +4,7 @@ programa{
     inteiro pos[5][5] // 1 = nada  2 = navio achado = limpo 4 onde eu to 
     logico navios [5][5]
     inteiro i = 1
+    logico n[5][5]
     
 
   //=-=-=Variaveis jogaveis=-=-
@@ -71,26 +72,59 @@ programa{
       escolha (jogada)
       {
         caso "w"
-         li++
+         li--
+         pos[li][co] = 4
         pare
 
         caso "s" 
-         li--
+         li++
+         pos[li][co] = 4
         pare
 
         caso "a"
          co--
+         pos[li][co] = 4
         pare
 
         caso "d"
-         co++  
+         co++ 
+         pos[li][co] = 4
         pare
 
         caso contrario
           escreva("opção invalida\n")
         pare
       }
-    pos[li][co] = 4
+      limpa()
+      i = 1
+      escreva("  1  2 3  4 5 \n")
+      para (inteiro linha = 0; linha <5; linha++){
+        escreva(i++," ")
+        para (inteiro coluna = 0; coluna < 5; coluna++){		
+          se(pos[linha][coluna] == 1){
+          escreva("☒ ")
+          }
+          senao se(pos[linha][coluna] == 2){
+            escreva("☑ ")
+          }
+          senao se(pos[linha][coluna] == 4){
+            escreva("□ ")
+          }
+          senao{
+            escreva("☐ ")
+          }
+        }
+        escreva("\n")
+      }
+
+    u.aguarde(500)
+    n[li][co] = verdadeiro
+    se(n[li][co] == navios[li][co]){
+      pos[li][co] = 2 
+    }
+    senao{
+      pos[li][co] = 1
+    }
 
 
 
