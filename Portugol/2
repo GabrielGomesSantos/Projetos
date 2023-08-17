@@ -1,18 +1,25 @@
 programa{
   inclua biblioteca Util --> u
   funcao inicio(){
+
+    //=-=-Variaveis de informações=-=-
+
     inteiro pos[5][5] // 1 = nada  2 = navio achado = limpo 4 onde eu to 
     logico navios [5][5]
     inteiro i = 1
     logico n[5][5]
-    
+    inteiro pontos
+    inteiro melhor = 0
 
   //=-=-=Variaveis jogaveis=-=-
+
     inteiro vida = 5
     inteiro pontos = 0
     cadeia jogada
     inteiro li = 0 , co = 0
-    
+    logico vidas = verdadeiro
+    cadeia nome 
+    inteiro op
 
   //=-=-=Resetar numeros=-=-=
 
@@ -45,10 +52,11 @@ programa{
   navios[4][4] = verdadeiro
 
    
-  //=-=-Mapa=-=-= □ ☐ ☑ ☒
+  //=-=-Mapa=-=-=  🟦 = 1 🚢 = 2
+  enquanto(vidas){
     escreva("Aperte W para ir para cima A para ir para a esquerda S para ir para baixo e S para ir para a direita, Boa sorte!\n")
-    enquanto(vida !=0){
-      limpa()
+    enquanto(vida > 0){
+       limpa()
       i = 1
       escreva("Vidas: ",vida," \n")
       escreva("   1  2   3  4   5 \n")
@@ -56,8 +64,7 @@ programa{
         escreva(i++," ")
         para (inteiro coluna = 0; coluna < 5; coluna++){		
           se(pos[linha][coluna] == 1){
-          escreva("🟦 ")
-          vida --
+          escreva("🟦 ")   
           }
           senao se(pos[linha][coluna] == 2){
             escreva("🚢 ")
@@ -73,7 +80,31 @@ programa{
         escreva("\n")
       }
        leia(jogada)
-
+       enquanto(jogada != "w" ou "a" ou "s" ou "d"){
+        limpa()
+              escreva("Vidas: ",vida," \n")
+      escreva("   1  2   3  4   5 \n")
+      para (inteiro linha = 0; linha <5; linha++){
+        escreva(i++," ")
+        para (inteiro coluna = 0; coluna < 5; coluna++){		
+          se(pos[linha][coluna] == 1){
+          escreva("🟦 ")   
+          }
+          senao se(pos[linha][coluna] == 2){
+            escreva("🚢 ")
+            pontos = pontos + 100
+          }
+          senao se(pos[linha][coluna] == 4){
+            escreva("⚫ ")
+          }
+          senao{
+            escreva("🌊 ")
+          }
+        }
+        escreva("jogada invalida,\nDigite novamente: ")
+        leia(jogada)
+       }
+      
       escolha (jogada)
       {
         caso "w"
@@ -101,44 +132,50 @@ programa{
         pare
       }
       limpa()
-      i = 1
-      escreva("vidas: ",vida," \n")
-      escreva("   1  2   3  4   5 \n")
-      para (inteiro linha = 0; linha <5; linha++){
-        escreva(i++," ")
-        para (inteiro coluna = 0; coluna < 5; coluna++){		
-          se(pos[linha][coluna] == 1){
-          escreva("🟦 ")
-          vida --
-          }
-          senao se(pos[linha][coluna] == 2){
-            escreva("🚢 ")
-            pontos = pontos + 100
-          }
-          senao se(pos[linha][coluna] == 4){
-            escreva("⚫ ")
-          }
-          senao{
-            escreva("🌊 ")
-          }
-        }
-        escreva("\n")
-      }
-      escreva("para confirmar joga repita!!")
-       leia(jogada)
 
-    u.aguarde(500)
-    n[li][co] = verdadeiro
-    se(n[li][co] == navios[li][co]){
-      pos[li][co] = 2 
+     
+
+      n[li][co] = verdadeiro
+
+      se(n[li][co] == navios[li][co]){
+        pos[li][co] = 2 
+        
+      }
+        senao{
+          pos[li][co] = 1
+          vida--
+      }
+    }
+    
+    escreva("Digite um nome para salvar os pontos!!!\nNome: ")
+    leia(nome)
+    escreva("=-=-Tabela de Pontos=-=-\n")
+    se(pontos>melhor){
+      escreva("Parece que temos um novo marco de pontos PARABENS!!!🎉🎉🎉\n\n")
+      melhor = pontos
     }
     senao{
-      pos[li][co] = 1
+      escreva("Não foi dessa vez, continue tentando para ficar em melhor!")
     }
+    escreva("Melhor Pontuação: ",nome,": ",melhor,"\n")
+    escreva("Pontuação Atual: ",nome," ",pontos)
+    escreva("\n\nDeseja jogar de novo?\n1) Sim \n2) Nâo")
+    leia(op)
+    se(op == 1){
+      vidas = verdadeiro
+      vida = 5
+      li = 0 
+      co = 0
+      para (inteiro l = 0; l<5; l++){
+			para (inteiro c = 0; c < 5; c++){	
+        pos[l][c] = 3
+      }
+    }  
 
-
-
-
-
+    }
+    senao{
+      vidas = falso
+    }
+  } 
   }
 }
